@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MySQLInfigo {
 
@@ -9,8 +7,15 @@ public class MySQLInfigo {
         String user = "root";
         String password = "free";
 
+        Statement statement;
+        ResultSet resultSet;
+
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
+
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("Select * from id");
+
             System.out.println("Connection successful!");
 
         } catch (SQLException e) {
